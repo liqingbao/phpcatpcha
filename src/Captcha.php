@@ -1,4 +1,6 @@
 <?php
+namespace Ks\Captcha;
+
 class Captcha
 {
     //随机因子
