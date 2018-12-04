@@ -5,6 +5,7 @@
     "keywords": ["captcha", "security", "image captcha"],
     "homepage": "https://github.com/liqingbao/phpcatpcha.git",
     "license": "MIT",
+    "minimum-stability": "v1.0",
     "autoload": {
         "psr-4": {
             "Ks\\": "src/"
