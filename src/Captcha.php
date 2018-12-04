@@ -1,5 +1,5 @@
 <?php
-namespace Ks\Captcha;
+namespace Ks;
 
 class Captcha
 {
@@ -24,7 +24,7 @@ class Captcha
     public function __construct($params = array())
     {
         //注意字体路径要写对，否则显示不了图片
-        $this->font = './Elephant.ttf';
+        $this->font = __DIR__ . '/Elephant.ttf';
         if (isset($params['len'])) {
             $this->code_len = $params['len'];
         }
