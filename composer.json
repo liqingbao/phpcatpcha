@@ -5,10 +5,9 @@
     "keywords": ["captcha", "security", "image captcha"],
     "homepage": "https://github.com/liqingbao/phpcatpcha.git",
     "license": "MIT",
-    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "": "/src"
+            "Ks\\captcha\\": "src/"
         }
     },
     "require": {
