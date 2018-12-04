@@ -1,6 +1,6 @@
 {
     "name": "ks/captcha",
-    "type": "captcha",
+    "type": "lib",
     "description": "A simple Captcha generator library, good looking and easy to use",
     "keywords": ["captcha", "security", "image captcha"],
     "homepage": "https://github.com/liqingbao/phpcatpcha.git",

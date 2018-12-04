@@ -1,7 +1,7 @@
 <?php
-require "./Captcha.php";
+require "./src/Captcha.php";
 
-$Captcha = new Captcha();
+$Captcha = new Ks\Captcha();
 //输出图片
 $Captcha->outPut();
 //获取图片验证码
