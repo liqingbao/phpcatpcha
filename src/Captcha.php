@@ -6,9 +6,9 @@ class Captcha
     //随机因子
     private $charset = 'abcdefghkmnprstuvwxyzABCDEFGHKMNPRSTUVWXYZ23456789';
     //要输出的验证码
-    private $code;
+    private $Captcha;
     //验证码长度
-    private $code_len = 4;
+    private $CaptchaLength = 4;
     //宽度
     private $width = 130;
     //高度
@@ -18,15 +18,14 @@ class Captcha
     //指定的字体
     private $font;
     //指定字体大小
-    private $font_size = 25;
-    //指定字体颜色
-    private $font_color;
+    private $fontSize = 25;
+
     public function __construct($params = array())
     {
         //注意字体路径要写对，否则显示不了图片
         $this->font = __DIR__ . '/Elephant.ttf';
-        if (isset($params['len'])) {
-            $this->code_len = $params['len'];
+        if (isset($params['length'])) {
+            $this->CaptchaLength = $params['length'];
         }
 
         if (isset($params['width'])) {
@@ -37,21 +36,17 @@ class Captcha
             $this->height = $params['height'];
         }
 
-        if (isset($params['font_size'])) {
-            $this->font_size = $params['font_size'];
-        }
-
-        if (isset($params['font_color'])) {
-            $this->font_color = $params['font_color'];
+        if (isset($params['fontSize'])) {
+            $this->fontSize = $params['fontSize'];
         }
 
     }
     //生成随机码
-    private function createCode()
+    private function createCaptcha()
     {
         $_len = strlen($this->charset) - 1;
-        for ($i = 0; $i < $this->code_len; $i++) {
-            $this->code .= $this->charset[mt_rand(0, $_len)];
+        for ($i = 0; $i < $this->CaptchaLength; $i++) {
+            $this->Captcha .= $this->charset[mt_rand(0, $_len)];
         }
     }
     //生成背景
@@ -64,10 +59,10 @@ class Captcha
     //生成文字
     private function createFont()
     {
-        $_x = $this->width / $this->code_len;
-        for ($i = 0; $i < $this->code_len; $i++) {
-            $this->font_color = imagecolorallocate($this->img, mt_rand(0, 156), mt_rand(0, 156), mt_rand(0, 156));
-            imagettftext($this->img, $this->font_size, mt_rand(-30, 30), $_x * $i + mt_rand(1, 5), $this->height / 1.4, $this->font_color, $this->font, $this->code[$i]);
+        $_x = $this->width / $this->CaptchaLength;
+        for ($i = 0; $i < $this->CaptchaLength; $i++) {
+            $color = imagecolorallocate($this->img, mt_rand(0, 156), mt_rand(0, 156), mt_rand(0, 156));
+            imagettftext($this->img, $this->fontSize, mt_rand(-30, 30), $_x * $i + mt_rand(1, 5), $this->height / 1.4, $color, $this->font, $this->Captcha[$i]);
         }
     }
     //生成线条、雪花
@@ -95,14 +90,14 @@ class Captcha
     public function outPut()
     {
         $this->createBg();
-        $this->createCode();
+        $this->createCaptcha();
         $this->createLine();
         $this->createFont();
         $this->out();
     }
     //获取验证码
-    public function getCode()
+    public function getCaptcha()
     {
-        return strtolower($this->code);
+        return strtolower($this->Captcha);
     }
 }
