@@ -28,4 +28,4 @@ $Captcha = new Captcha($config);
 $Captcha->outPut();
 ```
 ## About
-公司大神留下的验证码类库 折腾了好久 终于发布到Packagist
+php图片验证码
